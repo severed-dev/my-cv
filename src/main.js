@@ -9,6 +9,7 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg')
 });
 
+alert(window.location.pathname);
 //console.log(path.join('xxx','yyy','zzz'));
 //console.log(path);
 
