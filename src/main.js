@@ -1,12 +1,17 @@
 import './style.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+//import { join, resolve, basename } from 'node:path';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg')
 });
+
+//console.log(path.join('xxx','yyy','zzz'));
+//console.log(path);
+
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -44,7 +49,7 @@ function addStar() {
 Array(200).fill().forEach(addStar);
 
 const textureLoader = new THREE.TextureLoader();
-const spaceTexture = textureLoader.load('./space.jpg');
+const spaceTexture = textureLoader.load('src/space.jpg');
 scene.background = spaceTexture;
 const profileTexture = textureLoader.load('/eye.jpg');
 const profileCube = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: profileTexture }));
