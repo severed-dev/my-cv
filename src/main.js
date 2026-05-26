@@ -44,9 +44,9 @@ function addStar() {
 Array(200).fill().forEach(addStar);
 
 const textureLoader = new THREE.TextureLoader();
-const spaceTexture = textureLoader.load('space.jpg');
+const spaceTexture = textureLoader.load('./src/space.jpg');
 scene.background = spaceTexture;
-const profileTexture = textureLoader.load('eye.jpg');
+const profileTexture = textureLoader.load('../src/eye.jpg');
 const profileCube = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: profileTexture }));
 profileCube.position.set(20, 0, 0);
 scene.add(profileCube);
@@ -64,8 +64,8 @@ function addBody(posX, posY, posZ, bodyFile, textureFile) {
   return body;
 }
 
-const moon = addBody(-10, 0, 30, 'moon.jpg', 'normal.jpg');
-const sun = addBody(10, 0, 40, '1024px-Solarsystemscope_texture_2k_sun.jpg');
+const moon = addBody(-10, 0, 30, '.src/moon.jpg', 'src/normal.jpg');
+const sun = addBody(10, 0, 40, '/src/1024px-Solarsystemscope_texture_2k_sun.jpg');
 
 const qrHelloWorld = new THREE.MeshBasicMaterial({ map: textureLoader.load('qr-hello-world.png') });
 const qrLorumIpsum = new THREE.MeshBasicMaterial({ map: textureLoader.load('qr-lorum-ipsum.png') });
