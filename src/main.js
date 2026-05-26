@@ -9,7 +9,7 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg')
 });
 
-alert(window.location.pathname);
+//alert(window.location.pathname);
 //console.log(path.join('xxx','yyy','zzz'));
 //console.log(path);
 
@@ -50,7 +50,7 @@ function addStar() {
 Array(200).fill().forEach(addStar);
 
 const textureLoader = new THREE.TextureLoader();
-const spaceTexture = textureLoader.load('./src/space.jpg');
+const spaceTexture = textureLoader.load('src/space.jpg');
 scene.background = spaceTexture;
 const profileTexture = textureLoader.load('/eye.jpg');
 const profileCube = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: profileTexture }));
