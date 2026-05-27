@@ -1,7 +1,15 @@
 import './style.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import space from './space.jpg';
+
+import _eye from './eye.jpg';
+import _moon from './moon.jpg';
+import _moonTexture from './moonTexture.jpg';
+import _normal from './normal.jpg';
+import _helloWorld from './qrHelloWorld.png';
+import _lorumIpsum from './qrLorumIpsum.png';
+import _space from './space.jpg';
+import _sunTexture from './sunTexture.jpg';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -45,9 +53,9 @@ function addStar() {
 Array(200).fill().forEach(addStar);
 
 const textureLoader = new THREE.TextureLoader();
-const spaceTexture = textureLoader.load(space);
+const spaceTexture = textureLoader.load(_space);
 scene.background = spaceTexture;
-const profileTexture = textureLoader.load('eye.jpg');
+const profileTexture = textureLoader.load(_eye);
 const profileCube = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: profileTexture }));
 profileCube.position.set(20, 0, 0);
 scene.add(profileCube);
@@ -65,11 +73,11 @@ function addBody(posX, posY, posZ, bodyFile, textureFile) {
   return body;
 }
 
-const moon = addBody(-10, 0, 30, 'src/moon.jpg', 'src/normal.jpg');
-const sun = addBody(10, 0, 40, 'src/1024px-Solarsystemscope_texture_2k_sun.jpg');
+const moon = addBody(-10, 0, 30, _moon, _normal);
+const sun = addBody(10, 0, 40, _sunTexture);
 
-const qrHelloWorld = new THREE.MeshBasicMaterial({ map: textureLoader.load('src/qr-hello-world.png') });
-const qrLorumIpsum = new THREE.MeshBasicMaterial({ map: textureLoader.load('/src/qr-lorum-ipsum.png') });
+const qrHelloWorld = new THREE.MeshBasicMaterial({ map: textureLoader.load(_helloWorld) });
+const qrLorumIpsum = new THREE.MeshBasicMaterial({ map: textureLoader.load(_lorumIpsum) });
 const qrCube = new THREE.Mesh(new THREE.BoxGeometry(16, 16, 16), [qrHelloWorld, qrLorumIpsum, qrHelloWorld, qrHelloWorld, qrLorumIpsum, qrHelloWorld]);
 qrCube.position.set(40, -30, 5);
 qrCube.rotation.set(-0.4, -1.2, -0.2);
@@ -95,7 +103,7 @@ function animate() {
   moon.rotation.y += 0.0075;
   moon.rotation.z += 0.0075;
   sun.rotation.y += 0.001;
-  qrCube.rotateY(0.01);
+  qrCube.rotateY(0.001);
 
   controls.update(); // doesn't seem to make a difference
   renderer.render(scene, camera);
